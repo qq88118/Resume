@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6a10f35ab4.js" crossorigin="anonymous"></script>
+    <link type="text/css" href="css/index.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        class DrawLoad {
+            constructor(canvas) {
+                this.per = 0;
+                this.canvas = document.getElementById(canvas); //获取canvas元素
+                this.context = this.canvas.getContext('2d'); //获取画图环境，指明为2d
+                this.centerX = this.canvas.width / 2; //Canvas中心点x轴坐标
+                this.centerY = this.canvas.height / 2; //Canvas中心点y轴坐标
+                this.rad = Math.PI * 2 / 100; //将360度分成100份，那么每一份就是this.rad度
+                this.drawFrame();
+            }
+            /**
+             * 设置百分比
+             * @param 整数 0-100
+             */
+            setPer(per) {
+                this.per = per;
+            }
+            // 清除动画刷新
+            clearAnimation() {
+                window.cancelAnimationFrame(this.raf_id);
+            }
+
+            //绘制当前百分比圈
+            currentCircle() {
+                this.context.save();
+                this.context.strokeStyle = "#939391"; //设置描边样式
+                this.context.lineWidth = 8; //设置线宽
+                this.context.beginPath(); //路径开始
+                this.context.arc(this.centerX, this.centerY, 50, -Math.PI / 2, -Math.PI / 2 + this.per * this.rad, false); //用于绘制圆弧this.context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+                this.context.stroke(); //绘制
+                this.context.closePath(); //路径结束
+                this.context.restore();
+            }
+            //绘制轨迹圈
+            bgCircle() {
+                this.context.save();
+                this.context.beginPath();
+                this.context.lineWidth = 8; //设置线宽
+                this.context.strokeStyle = "#ddd";
+                this.context.arc(this.centerX, this.centerY, 50, 0, Math.PI * 2, false);
+                this.context.stroke();
+                this.context.closePath();
+                this.context.restore();
+            }
+            //百分比文字绘制
+            text() {
+                this.context.save(); //save和restore可以保证样式属性只运用于该段canvas元素
+                this.context.fillStyle = "black"; //设置描边样式
+                this.context.font = "20px Arial"; //设置字体大小和字体
+                //绘制字体，并且指定位置
+                this.context.fillText(this.per.toFixed(0) + "%", this.centerX - 16, this.centerY + 6);
+                // this.context.stroke(); //执行绘制
+                this.context.restore();
+            }
+            //动画循环
+            drawFrame() {
+                this.raf_id = window.requestAnimationFrame(this.drawFrame.bind(this));
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.bgCircle();
+                this.text();
+                this.currentCircle();
+            };
+        }
+        
+
+    </script>
+    <script>
+        document.getElementsByTagName("html")[0].className += " js";
+
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="mainarea">
+        <div class="bigimg">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="pic/person.jpg" width=100% height=100%>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="filpboxdiv">
+                            <span style="font-size: 1em; color: black;">
+                                <a href="https://qq88118.github.io/selfprofile/" target="_blank" alt="個人網頁" style="color:black"><i class="fab fa-github fa-2x"></i></a>
+                            </span>
+                            <br>
+                            <br>
+
+                            <span style="font-size: 1em; color: black;">
+                                <a href="https://qq88118.github.io/web/" target="_blank" style="color:black"><i class="fab fa-github fa-2x"></i></a>
+
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="profilearea">
+            <a class="profiletxt">
+                姓名：陳昭綸
+                <br>
+                系級：資管二乙 10744241
+                <br>
+                生日：1999/11/08
+                <br>
+                電話：0903605759
+                <br>
+                「 墮落和努力，都會上癮。 」
+
+            </a>
+        </div>
+    </div>
+    <div class="progressarea">
+        <div class="skilltitle">
+
+            <a style="font-size: 45px ;">
+                相關技能：
+            </a>
+
+        </div>
+        <div class="skillcontent">
+
+            <div class="innerforskill">
+
+                <div class="skilltxt">
+                    <span style="font-size: 1em; color: aliceblue;">
+                        <a style="color:black"><i class="fab fa-html5 fa-3x"></i></a>
+                    </span>
+
+                    <a style="font-size: 45px ;">HTML</a>
+                </div>
+                <div class="skillbar">
+                    <div class="progress" style="background-color: #D2BFA6 ;height: 45px ;">
+                        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 70% ;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">70%</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="innerforskill">
+
+                <div class="skilltxt">
+                    <span style="font-size: 1em; color: aliceblue;">
+                        <a style="color:black;"><i class="fab fa-css3-alt fa-3x"></i></a>
+                    </span>
+
+                    <a style="font-size: 45px ;">CSS</a>
+                </div>
+                <div class="skillbar">
+                    <div class="progress" style="background-color: #D2BFA6 ;height: 45px ;">
+                        <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 80% ;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="innerforskill">
+
+                <div class="skilltxt">
+                    <span style="font-size: 1em; color: aliceblue;">
+                        <a style="color:black;"><i class="fab fa-java fa-3x"></i></a>
+                    </span>
+
+                    <a style="font-size: 45px ;">JAVA</a>
+                </div>
+                <div class="skillbar">
+                    <div class="progress" style="background-color: #D2BFA6 ;height: 45px ;">
+                        <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 60% ;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="innerforskill">
+
+                <div class="skilltxt">
+                    <span style="font-size: 1em; color: aliceblue;">
+                        <a style="color:black;"><i class="fas fa-server fa-3x"></i></a>
+                    </span>
+
+                    <a style="font-size: 45px ;">JSP</a>
+                </div>
+                <div class="skillbar">
+                    <div class="progress" style="background-color: #D2BFA6 ;height: 45px ;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90% ;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="innerforskill">
+
+                <div class="skilltxt">
+                    <span style="font-size: 1em; color: aliceblue;">
+                        <a style="color:black;"><i class="fab fa-swift fa-3x"></i></a>
+                    </span>
+
+                    <a style="font-size: 45px ;">SWIFT</a>
+                </div>
+                <div class="skillbar">
+                    <div class="progress" style="background-color: #D2BFA6 ;height: 45px ;">
+                        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 75% ;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">75%</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="bench">
+        <section class="cd-timeline js-cd-timeline">
+            <div class="container max-width-lg cd-timeline__container">
+                <div class="cd-timeline__block">
+
+                    <div class="cd-timeline__content text-component">
+
+                        <p class="color-contrast-medium">管理學專案<br>動服社</p>
+
+                        <div class="flex justify-between items-center">
+                            <span class="cd-timeline__date">大一上</span>
+
+                        </div>
+                    </div> <!-- cd-timeline__content -->
+                </div> <!-- cd-timeline__block -->
+
+                <div class="cd-timeline__block">
+
+                    <div class="cd-timeline__content text-component">
+
+                        <p class="color-contrast-medium">企業概論<br>只想皂顧你</p>
+
+                        <div class="flex justify-between items-center">
+                            <span class="cd-timeline__date">大一下</span>
+
+                        </div>
+                    </div> <!-- cd-timeline__content -->
+                </div> <!-- cd-timeline__block -->
+
+                <div class="cd-timeline__block">
+
+                    <div class="cd-timeline__content text-component">
+
+                        <p class="color-contrast-medium">網路程式設計<br>早餐店預訂系統</p>
+
+                        <div class="flex justify-between items-center">
+                            <span class="cd-timeline__date">大二上</span>
+
+                        </div>
+                    </div> <!-- cd-timeline__content -->
+                </div> <!-- cd-timeline__block -->
+
+                <div class="cd-timeline__block">
+
+
+                    <div class="cd-timeline__content text-component">
+
+                        <p class="color-contrast-medium">多媒體程式設計<br>樂學園推廣</p>
+
+                        <div class="flex justify-between items-center">
+                            <span class="cd-timeline__date">大二下</span>
+
+                        </div>
+                    </div> <!-- cd-timeline__content -->
+                </div> <!-- cd-timeline__block -->
+
+
+            </div>
+        </section>
+    </div>
+    <div class="cycleandphoto">
+        <div class="cycle">
+            <div class="areaforcycletxt">
+                <div class="cycletxt">
+                    專業能力：
+                </div>
+                <div class="cycletxt">
+                    外語能力：
+                </div>
+                <div class="cycletxt">
+                    人際關係：
+                </div>
+            </div>
+            <div class="cycleimgprogress">
+                <canvas id="canvas" width="150" height="150"></canvas>
+            </div>
+            <div class="cycleimgprogress">
+                <canvas id="canvas2" width="150" height="150"></canvas>
+            </div>
+            <div class="cycleimgprogress">
+                <canvas id="canvas3" width="150" height="150"></canvas>
+            </div>
+            <script>
+                const dl = new DrawLoad('canvas');
+                let i = 0;
+                let iv = Number;
+                iv = setInterval(() => {
+                    dl.setPer(++i);
+                    if (i > 90) {
+                        clearInterval(iv); // 清除
+                        dl.clearAnimation(); //清除动画刷新
+                    }
+                }, 20);
+                const dl2 = new DrawLoad('canvas2');
+                let i2 = 0;
+                let iv2 = Number;
+                iv2 = setInterval(() => {
+                    dl2.setPer(++i2);
+                    if (i2 > 80) {
+                        clearInterval(iv2); // 清除
+                        dl2.clearAnimation(); //清除动画刷新
+                    }
+                }, 20);
+                const dl3 = new DrawLoad('canvas3');
+                let i3 = 0;
+                let iv3 = Number;
+                iv3 = setInterval(() => {
+                    dl3.setPer(++i3);
+                    if (i3 > 45) {
+                        clearInterval(iv3); // 清除
+                        dl3.clearAnimation(); //清除动画刷新
+                    }
+                }, 20);
+
+            </script>
+        </div>
+        <div class="photoarea">
+            <div class="photoup">
+                <div class="photostylebig">
+                    <img src="pic/dog1.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+                <div class="photostyleright">
+                    <img src="pic/soap1.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+                <div class="photostyleleft">
+                    <img src="pic/dog4.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+            </div>
+            <div class="photodown">
+                <div class="photostylebig">
+                    <img src="pic/dog2.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+                <div class="photostyleright">
+                    <img src="pic/soap2.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+                <div class="photostyleleft">
+                    <img src="pic/dog3.jpg" width=80% height=80% style="border-radius: 5%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cc">Copyright © 2020 CYIM. All Rights Reserved</div>
+</body>
+
+</html>

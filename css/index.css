@@ -1,0 +1,252 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body {
+    font-family: "cwTeXYen", sans-serif !important;
+    margin: 0 !important;
+    background-color: #22252C !important;
+}
+
+div.mainarea {
+    width: 60%;
+    height: 400px;
+    background-color: #EBEBE3;
+    margin-left: 20%;
+    margin-top: 30px;
+    padding-top: 40px;
+    padding-left: 10%;
+}
+
+div.bigimg {
+    height: 325px;
+    width: 30%;
+    background-color: #EBEBE3;
+    float: left;
+}
+
+div.profilearea {
+    height: 325px;
+    width: 60%;
+    background-color: #EBEBE3;
+    float: left;
+    padding-top: 40px;
+    padding-left: 5%;
+    
+}
+
+a.profiletxt {
+    font-size: 35px;
+}
+
+div.progressarea {
+    width: 60%;
+    height: 450px;
+    background-color: #D2BFA6;
+    margin-left: 20%;
+    margin-top: 10px ; 
+}
+
+div.skilltitle {
+    height: 75px;
+    width: 50%;
+    margin-left: 40%;
+
+}
+
+div.innerforskill {
+    width: 100%;
+    padding-left: 10%;
+    height: 75px;
+}
+
+div.skilltxt {
+    width: 22%;
+    height: 75px;
+    float: left;
+
+}
+
+div.skillbar {
+    width: 70%;
+    height: 75px;
+    float: left;
+    padding-top: 9px;
+}
+
+div.bench {
+    width: 400px;
+    height: 725px;
+    background-color: #B8926A;
+    margin-left: 20%;
+    float: left;
+    margin-top: 10px ; 
+}
+
+div.cycleandphoto {
+    width: 730px;
+    height: 725px;
+    background-color: ;
+    float: left;
+    margin-top: 10px ; 
+    margin-left: 10px ; 
+    
+}
+
+div.cycle {
+    width: 730px;
+    height: 200px;
+    background-color: #D4C8BE;
+    margin-bottom: 10px ; 
+}
+div.areaforcycletxt{
+    height: 50px ; 
+    width: 100% ;
+}
+div.cycletxt{
+    height: 50px ; 
+    width: 33% ; 
+    
+    float: left ; 
+    text-align: center ; 
+    font-size: 26px ; 
+    padding-top: 20px ;
+    padding-left: 25px ;
+    
+}
+div.areaforcycleprogress{
+    height: 200px ;
+    width: 100% ; 
+}
+div.cycleimgprogress{
+    height: 150px ; 
+    width: 33%  ; 
+    float: left ;
+    padding-left: 6% ; 
+}
+div.photoarea{
+    margin-top: 10px ; 
+    height: 515px ; 
+    width: 100% ; 
+    background-color: #A39886  ; 
+}
+div.photoup{
+    width: 100% ; 
+    height: 50% ; 
+}
+div.photodown{
+    width: 100% ; 
+    height: 50% ; 
+}
+div.photostylebig{
+    height: 100% ; 
+    width: 33% ; 
+    float: left ;
+    text-align: center ; 
+
+    padding-top: 6% ; 
+}
+div.photostyleright{
+    height: 100% ; 
+    width: 34% ; 
+    float: left ;
+    text-align: center ; 
+    
+    padding-top: 6% ; 
+}
+div.photostyleleft{
+    height: 100% ; 
+    width: 33% ; 
+    float: left ;
+    text-align: center ; 
+   
+    padding-top: 6% ; 
+    
+}
+div.photostylebig img:hover{
+    transform: scale(1.2) ; 
+    transition:all 0.5s ease 0s
+}
+div.photostyleright img:hover{
+    transform:rotate(360deg) ; 
+    transition:all 1.5s ease 0s
+}
+div.photostyleleft img:hover{
+    transform: scale(1.2) ; 
+    transition:all 0.5s ease 0s
+}
+div.cc{
+    width: 60%;
+    height: 50px;
+    background-color: #665152;
+    margin-left: 20%;
+    margin-bottom: 30px ; 
+    text-align: center;
+    float: left ; 
+    font-size: 20px ; 
+    padding-top: 10px ; 
+    margin-top: 10px ; 
+}
+
+
+/*以下為W3C FlipBox*/
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+
+    color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: #D5D5D5;
+    color: white;
+    font-size: 10px;
+    transform: rotateY(180deg);
+}
+
+a.photodiscribe {
+    font-size: 40px;
+    text-align: center;
+}
+
+div.filpboxdiv {
+    height: 100%;
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20%;
+}
